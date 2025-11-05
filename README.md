@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://modrinth.com/mod/showdium"><img src="https://img.shields.io/modrinth/v/showdium?color=00AF5C&label=Modrinth&style=for-the-badge" alt="Modrinth"></a>
-  <a href="https://github.com/Fe4thers/showdium/actions"><img src="https://img.shields.io/github/actions/workflow/status/Fe4thers/showdium/build.yml?branch=main&style=for-the-badge" alt="Build Status"></a>
+<a href="https://github.com/Fe4thers/showdium/releases/latest"><img src="https://img.shields.io/github/v/release/Fe4thers/showdium?style=for-the-badge" alt="Latest Release"></a>
   <a href="https://github.com/Fe4thers/showdium/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Fe4thers/showdium?style=for-the-badge&color=blue" alt="License"></a>
 </p>
 About Showdium
@@ -87,4 +87,4 @@ To see a practical, working implementation of every feature, it's highly recomme
 A feature planned for the future is:
 LocationPingSystem
 
-smth with api here
+Api soon
