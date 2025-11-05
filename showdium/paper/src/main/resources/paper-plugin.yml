@@ -1,0 +1,9 @@
+name: Showdium
+version: 1.0.0
+main: com.noxcrew.noxesium.showdium.ShowdiumExtension
+api-version: '1.21.8'
+dependencies:
+  server:
+    NoxesiumApi:
+      load: BEFORE
+      required: true

@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.noxcrew.noxesium.showdium.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "BlockInteractionMixin",
+    "PistonPushMixin",
+    "CancelPlayerAttackMixin",
+    "RemoveSubtitleMixin",
+    "ForceCameraOption",
+    "ForceCameraType",
+    "StructureVoidBlockMixin",
+    "BlockBehaviourMixin",
+    "LoadingOverlayMixin",
+    "IGuiGraphicsAccessor",
+    "LoadingOverlayProgressBarMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+  ]
+}

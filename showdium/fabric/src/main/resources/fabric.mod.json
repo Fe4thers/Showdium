@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "showdium",
+  "version": "1.0.0",
+  "name": "Showdium",
+  "description": "Showdium, an Noxesium entrypoint that adds extra features to noxesium",
+  "authors": [
+    "Fe4thers"
+  ],
+  "icon": "assets/showdium/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "noxesium": [
+      "com.noxcrew.noxesium.showdium.ShowdiumEntrypoint"
+    ]
+  },
+  "mixins": [
+    "showdium.mixins.json"
+  ]
+}
