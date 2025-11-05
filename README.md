@@ -1,10 +1,11 @@
+![Showdium Header Image](https://cdn.modrinth.com/data/Vvgj4iCl/images/052de210d4460067b5861d08fbf24a7615ddd830_350.webp)
 <p align="center">
   <strong>An extension for Noxesium, unlocking powerful new server-side controls for an enhanced multiplayer experience.</strong>
 </p>
 
 <p align="center">
   <a href="https://modrinth.com/mod/showdium"><img src="https://img.shields.io/modrinth/v/showdium?color=00AF5C&label=Modrinth&style=for-the-badge" alt="Modrinth"></a>
-<a href="https://github.com/Fe4thers/showdium/releases/latest"><img src="https://img.shields.io/github/v/release/Fe4thers/showdium?style=for-the-badge" alt="Latest Release"></a>
+  <a href="https://github.com/Fe4thers/showdium/releases/latest"><img src="https://img.shields.io/github/v/release/Fe4thers/showdium?style=for-the-badge" alt="Latest Release"></a>
   <a href="https://github.com/Fe4thers/showdium/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Fe4thers/showdium?style=for-the-badge&color=blue" alt="License"></a>
 </p>
 About Showdium
