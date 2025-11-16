@@ -24,13 +24,19 @@ plugins {
     alias(libs.plugins.paperweight) apply false
     alias(libs.plugins.shadow) apply false
     alias(libs.plugins.run.paper) apply false
+    java  // Add this line!
+    `maven-publish`
+    signing
+    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
 }
+group = "com.github.Fe4thers"
+version = "1.0.0-SNAPSHOT"
 
 val javaVersion: Int = 21
 
 allprojects {
     group = "com.noxcrew.noxesium"
-    version = "1.0.0"
+    version = "1.0.0-SNAPSHOT"
 
     repositories {
         maven("https://repo.papermc.io/repository/maven-public/")
@@ -110,6 +116,24 @@ subprojects {
                     jvmTarget.set(JvmTarget.fromTarget(javaVersion.toString()))
                 }
             }
+        }
+    }
+}
+
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.Fe4thers"
+            artifactId = "showdium"
+            version = project.version.toString()
+
+            from(components["java"])
         }
     }
 }

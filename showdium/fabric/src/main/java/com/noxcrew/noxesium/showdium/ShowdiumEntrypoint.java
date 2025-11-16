@@ -25,7 +25,7 @@ public class ShowdiumEntrypoint implements ClientNoxesiumEntrypoint {
 
     @Override
     public String getVersion() {
-        return "showdium";
+        return "1.0.0";
     }
 
     @Override
