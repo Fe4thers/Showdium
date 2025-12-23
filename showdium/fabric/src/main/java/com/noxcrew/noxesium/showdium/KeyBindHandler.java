@@ -237,6 +237,7 @@ public final class KeyBindHandler extends NoxesiumFeature {
         this.activeActions.clear();
         this.cooldowns.clear();
         this.wasKeyDown.clear();
+        this.cancelledKeys.clear();
     }
 
     /**
