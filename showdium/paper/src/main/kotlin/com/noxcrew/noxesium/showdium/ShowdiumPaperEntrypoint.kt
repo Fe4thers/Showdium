@@ -26,7 +26,7 @@ public class ShowdiumPaperEntrypoint : NoxesiumEntrypoint {
 
     override fun getAllFeatures(): Collection<NoxesiumFeature> =
         listOf(
-            KeybindListener(),
+            ShowdiumServerPacketHandeling(),
         )
 
     override fun getPacketCollections(): Collection<PacketCollection> =

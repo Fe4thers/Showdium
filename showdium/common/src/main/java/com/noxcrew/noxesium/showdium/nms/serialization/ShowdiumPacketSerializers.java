@@ -2,9 +2,10 @@ package com.noxcrew.noxesium.showdium.nms.serialization;
 
 import static com.noxcrew.noxesium.api.nms.serialization.PacketSerializerRegistry.registerSerializer;
 
-import com.noxcrew.noxesium.showdium.network.clientbound.ClientboundKeybindAddPacket;
-import com.noxcrew.noxesium.showdium.network.clientbound.ClientboundKeybindRemovePacket;
+import com.noxcrew.noxesium.showdium.network.clientbound.*;
 import com.noxcrew.noxesium.showdium.network.serverbound.ServerboundKeybindTriggeredPacket;
+import com.noxcrew.noxesium.showdium.network.serverbound.ServerboundPingAddPacket;
+import com.noxcrew.noxesium.showdium.network.serverbound.ServerboundPingRemovePacket;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 
@@ -46,5 +47,48 @@ public class ShowdiumPacketSerializers {
                         ByteBufCodecs.BOOL,
                         ServerboundKeybindTriggeredPacket::pressedIn,
                         ServerboundKeybindTriggeredPacket::new));
+
+        registerSerializer(
+                ClientboundPingAddPacket.class,
+                StreamCodec.composite(
+                        ByteBufCodecs.INT,
+                        ClientboundPingAddPacket::color,
+                        ByteBufCodecs.STRING_UTF8,
+                        ClientboundPingAddPacket::uuid,
+                        ByteBufCodecs.VECTOR3F,
+                        ClientboundPingAddPacket::location,
+                        ClientboundPingAddPacket::new));
+
+        registerSerializer(
+                ClientboundPingRemovePacket.class,
+                StreamCodec.composite(
+                        ByteBufCodecs.STRING_UTF8,
+                        ClientboundPingRemovePacket::uuid,
+                        ClientboundPingRemovePacket::new));
+
+        registerSerializer(
+                ServerboundPingAddPacket.class,
+                StreamCodec.composite(
+                        ByteBufCodecs.INT,
+                        ServerboundPingAddPacket::color,
+                        ByteBufCodecs.STRING_UTF8,
+                        ServerboundPingAddPacket::uuid,
+                        ByteBufCodecs.VECTOR3F,
+                        ServerboundPingAddPacket::location,
+                        ServerboundPingAddPacket::new));
+
+        registerSerializer(
+                ServerboundPingRemovePacket.class,
+                StreamCodec.composite(
+                        ByteBufCodecs.STRING_UTF8,
+                        ServerboundPingRemovePacket::uuid,
+                        ServerboundPingRemovePacket::new));
+
+        registerSerializer(
+                ClientboundKeybindDisable.class,
+                StreamCodec.composite(
+                        ByteBufCodecs.STRING_UTF8,
+                        ClientboundKeybindDisable::KeyBindName,
+                        ClientboundKeybindDisable::new));
     }
 }

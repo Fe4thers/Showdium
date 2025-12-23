@@ -14,7 +14,10 @@
     "BlockBehaviourMixin",
     "LoadingOverlayMixin",
     "IGuiGraphicsAccessor",
-    "LoadingOverlayProgressBarMixin"
+    "LoadingOverlayProgressBarMixin",
+    "LevelRendererMixin",
+    "KeyMappingMixin",
+    "NoxesiumSettingsScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

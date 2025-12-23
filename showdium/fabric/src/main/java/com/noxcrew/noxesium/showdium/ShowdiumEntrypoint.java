@@ -6,11 +6,14 @@ import com.noxcrew.noxesium.api.network.PacketCollection;
 import com.noxcrew.noxesium.api.registry.RegistryCollection;
 import com.noxcrew.noxesium.showdium.network.ShowdiumPackets;
 import com.noxcrew.noxesium.showdium.nms.serialization.ShowdiumPacketSerializers;
+import com.noxcrew.noxesium.showdium.pingsystem.PingSystemFeature;
 import com.noxcrew.noxesium.showdium.registry.ShowdiumGameComponent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.Minecraft;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -34,14 +37,21 @@ public class ShowdiumEntrypoint implements ClientNoxesiumEntrypoint {
         return ShowdiumEntrypoint.class.getClassLoader().getResource("encryption-key.aes");
     }
 
+    public static Minecraft GAME = null;
     public static KeyBindHandler keyBindHandler;
     public static QibBehaviorExecutor qibBehaviorExecutor;
     public static ShowdiumPacketHandling packetHandling;
     public static ElytraListener elytraListener;
+    public static PingSystemFeature pingSystem;
 
     @Override
     public void preInitialize() {
+        GAME = Minecraft.getInstance();
         ShowdiumPacketSerializers.register();
+        boolean isLoaded = FabricLoader.getInstance().isModLoaded("debugify");
+        if (isLoaded) {
+            new DebugifyDisables();
+        }
     }
 
     @Override
@@ -50,6 +60,7 @@ public class ShowdiumEntrypoint implements ClientNoxesiumEntrypoint {
         keyBindHandler = new KeyBindHandler();
         packetHandling = new ShowdiumPacketHandling();
         elytraListener = new ElytraListener();
+        pingSystem = new PingSystemFeature();
     }
 
     @Override
@@ -59,6 +70,7 @@ public class ShowdiumEntrypoint implements ClientNoxesiumEntrypoint {
         features.add(packetHandling);
         features.add(qibBehaviorExecutor);
         features.add(elytraListener);
+        features.add(pingSystem);
         return features;
     }
 

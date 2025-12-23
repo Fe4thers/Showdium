@@ -6,10 +6,7 @@ import com.noxcrew.noxesium.api.network.NoxesiumServerboundNetworking;
 import com.noxcrew.noxesium.api.qib.QibDefinition;
 import com.noxcrew.noxesium.api.registry.NoxesiumRegistries;
 import com.noxcrew.noxesium.showdium.network.serverbound.ServerboundKeybindTriggeredPacket;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.kyori.adventure.key.Key;
@@ -43,6 +40,7 @@ public final class KeyBindHandler extends NoxesiumFeature {
     private final Map<KeyMapping, KeybindAction> activeActions = new HashMap<>();
     private final Map<String, Long> cooldowns = new HashMap<>();
     private final Map<KeyMapping, Boolean> wasKeyDown = new HashMap<>();
+    private final Set<KeyMapping> cancelledKeys = new HashSet<>();
 
     /**
      * Initializes the KeyBindHandler, pre-registering a pool of custom keybinds and setting up the tick listener.
@@ -55,6 +53,14 @@ public final class KeyBindHandler extends NoxesiumFeature {
             KeyBindingHelper.registerKeyBinding(key);
         }
         ClientTickEvents.END_CLIENT_TICK.register(this::onClientTick);
+    }
+
+    public void disableKeybinds(final String keybindName) {
+        final KeyMapping keyMapping = findKeyMapping(keybindName);
+        if (keyMapping == null) {
+            return;
+        }
+        this.cancelledKeys.add(keyMapping);
     }
 
     /**
@@ -98,6 +104,7 @@ public final class KeyBindHandler extends NoxesiumFeature {
         this.activeActions.remove(keyMapping);
         this.cooldowns.remove(keybindName);
         this.wasKeyDown.remove(keyMapping);
+        this.cancelledKeys.remove(keyMapping);
     }
 
     /**
@@ -110,7 +117,7 @@ public final class KeyBindHandler extends NoxesiumFeature {
         if (!isRegistered() || client.player == null) {
             return;
         }
-
+        // applyCancelledKeys();
         this.activeActions.forEach((key, action) -> {
             final boolean isCurrentlyDown = key.isDown();
             final boolean wasPreviouslyDown = this.wasKeyDown.getOrDefault(key, false);
@@ -128,6 +135,10 @@ public final class KeyBindHandler extends NoxesiumFeature {
             }
             this.wasKeyDown.put(key, isCurrentlyDown);
         });
+    }
+
+    public boolean isKeyCancelled(KeyMapping key) {
+        return cancelledKeys.contains(key);
     }
 
     /**

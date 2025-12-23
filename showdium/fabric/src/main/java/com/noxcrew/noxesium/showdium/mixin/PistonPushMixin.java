@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
-import net.minecraft.world.level.block.piston.PistonMovingBlockEntity;
+import net.minecraft.world.level.block.piston.*;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -43,6 +43,12 @@ public class PistonPushMixin {
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .toList();
+
+        if (pistonMovingBlockEntity.getMovedState().getBlock() instanceof PistonBaseBlock
+                || pistonMovingBlockEntity.getMovedState().getBlock() instanceof PistonHeadBlock
+                || pistonMovingBlockEntity.getMovedState().getBlock() instanceof MovingPistonBlock) {
+            return false;
+        }
 
         if ((pistonMovingBlockEntity.getMovedState().getBlock() instanceof SlabBlock
                         || pistonMovingBlockEntity.getMovedState().getBlock() instanceof StairBlock

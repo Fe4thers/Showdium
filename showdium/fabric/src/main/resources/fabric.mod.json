@@ -12,6 +12,9 @@
   "entrypoints": {
     "noxesium": [
       "com.noxcrew.noxesium.showdium.ShowdiumEntrypoint"
+    ],
+    "debugify": [
+      "com.noxcrew.noxesium.showdium.DebugifyDisables"
     ]
   },
   "mixins": [

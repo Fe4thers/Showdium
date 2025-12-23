@@ -35,8 +35,6 @@ version = "1.0.0-SNAPSHOT"
 val javaVersion: Int = 21
 
 allprojects {
-    group = "com.noxcrew.noxesium"
-    version = "1.0.0-SNAPSHOT"
 
     repositories {
         maven("https://repo.papermc.io/repository/maven-public/")
@@ -47,6 +45,7 @@ allprojects {
         maven("https://maven.covers1624.net/")
         maven("https://repo.viaversion.com")
         maven("https://maven.noxcrew.com/public")
+        maven("https://maven.isxander.dev/releases/")
         mavenCentral()
         maven {
             setUrl("https://api.modrinth.com/maven")
