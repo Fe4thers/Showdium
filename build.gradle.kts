@@ -30,7 +30,7 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
 }
 group = "com.github.Fe4thers"
-version = "1.0.0-SNAPSHOT"
+version = "v1.0.1"
 
 val javaVersion: Int = 21
 
